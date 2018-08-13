@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 pet-add-form">
+    <div class="pet-add">
+        <h1>Share with us some information about your pet:</h1>
+    </div>
+    <form #f="ngForm" (ngSubmit)="login(f)">
+      <div class="form-group">
+        <label for="breed">Breed</label>
+        <input 
+        required
+        type="text" 
+        id="breed" 
+        name="breed"
+        ngModel
+        class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input 
+        required
+        type="text" 
+        id="age" 
+        name="age"
+        ngModel
+        class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input 
+        required
+        type="text" 
+        id="name" 
+        name="name"
+        ngModel
+        class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea 
+        required 
+        id="description" 
+        name="description"
+        ngModel
+        class="form-control">
+        </textarea>
+      </div>
+      <div class="form-group">
+        <select class="custom-select">
+          <option selected="cats">Category</option>
+          <option value="cats">Cats</option>
+          <option value="dogs">Dogs</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <div class="custom-control custom-radio">
+          <input type="radio" id="male" name="gender" class="custom-control-input">
+          <label class="custom-control-label" for="male">Male</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="female" name="gender" class="custom-control-input">
+          <label class="custom-control-label" for="female">Female</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input 
+        required
+        type="text" 
+        id="imageUrl" 
+        name="imageUrl"
+        ngModel
+        class="form-control">
+      </div>
+      <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Sign In</button>
+    </form>
+  </div>
+</div>  

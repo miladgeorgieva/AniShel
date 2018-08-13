@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 login-box">
+    <div class="login-title">
+        <h1>Log in now to see all of our pets</h1>
+        <h6>And maybe adopt one or two :)</h6>
+    </div>
+      <form #f="ngForm" (ngSubmit)="login(f)">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+          required
+          email
+          type="email" 
+          id="email" 
+          name="email"
+          ngModel
+          class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            required
+            type="password"
+            id="password"
+            name="password"
+            ngModel
+            class="form-control">
+        </div>
+        <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Sign In</button>
+      </form>
+    </div>
+  </div>
+  
+  

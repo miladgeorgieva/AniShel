@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files 
+html, body {
+    /* make sure the body does not have a margin 
+    margin: 0;
+    /* this forces the body tag to fill the height of the window 
+    height: 100%;
+}
+.container {
+    /* the .app div needs to be AT LEAST 100% of the height of the window 
+    min-height: 100%;
+    /* now that it is 100% the height, we 'pull' the footer up 
+    /* margin-bottom must be the same height as the footer height below 
+    margin-bottom: -84px; 
+}
+footer{
+    /* .set the height of the footer 
+    height: 84px;
+}
+*/
