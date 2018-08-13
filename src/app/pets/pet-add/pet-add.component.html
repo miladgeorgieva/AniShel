@@ -3,7 +3,7 @@
     <div class="pet-add">
         <h1>Share with us some information about your pet:</h1>
     </div>
-    <form #f="ngForm" (ngSubmit)="login(f)">
+    <form #f="ngForm" (ngSubmit)="addPet(f)">
       <div class="form-group">
         <label for="breed">Breed</label>
         <input 
@@ -11,17 +11,17 @@
         type="text" 
         id="breed" 
         name="breed"
-        ngModel
+        [(ngModel)]="bindingModel.breed"
         class="form-control">
       </div>
       <div class="form-group">
         <label for="age">Age</label>
         <input 
         required
-        type="text" 
+        type="number" 
         id="age" 
         name="age"
-        ngModel
+        [(ngModel)]="bindingModel.age"
         class="form-control">
       </div>
       <div class="form-group">
@@ -31,7 +31,7 @@
         type="text" 
         id="name" 
         name="name"
-        ngModel
+        [(ngModel)]="bindingModel.name"
         class="form-control">
       </div>
       <div class="form-group">
@@ -40,29 +40,30 @@
         required 
         id="description" 
         name="description"
-        ngModel
+        [(ngModel)]="bindingModel.description"
         class="form-control">
         </textarea>
       </div>
       <div class="form-group">
-        <select class="custom-select">
-          <option selected="cats">Category</option>
+        <select class="custom-select" name="category" [(ngModel)]="bindingModel.category" required>
+          <option selected value="">Category</option>
           <option value="cats">Cats</option>
           <option value="dogs">Dogs</option>
         </select>
       </div>
       <div class="form-group">
+        <label for="gender">Gender</label>
         <div class="custom-control custom-radio">
-          <input type="radio" id="male" name="gender" class="custom-control-input">
+          <input type="radio" id="male" name="gender" class="custom-control-input" value="male" [(ngModel)]="bindingModel.gender" required>
           <label class="custom-control-label" for="male">Male</label>
         </div>
         <div class="custom-control custom-radio">
-          <input type="radio" id="female" name="gender" class="custom-control-input">
+          <input type="radio" id="female" name="gender" class="custom-control-input" value="female" [(ngModel)]="bindingModel.gender" required>
           <label class="custom-control-label" for="female">Female</label>
         </div>
       </div>
-      <div class="form-group">
-        <label for="imageUrl">Image URL</label>
+      <!-- <div class="form-group">
+        <label for="imageUrl">Image</label>
         <input 
         required
         type="text" 
@@ -70,8 +71,13 @@
         name="imageUrl"
         ngModel
         class="form-control">
-      </div>
-      <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Sign In</button>
+      </div> -->
+      <div class="form-group">
+          <label for="image">Image</label>
+          <input type="file" class="form-control-file" id="image" name="image" aria-describedby="fileHelp" (change)="onFileSelected($event)">
+          <small id="fileHelp" class="form-text text-muted">Choose the photo of your pet</small>
+        </div>
+      <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Add Pet</button>
     </form>
   </div>
 </div>  

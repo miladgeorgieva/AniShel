@@ -6,7 +6,7 @@ import { PetAdd } from './models/pet-add.model';
 // import { RecipeCreate } from './models/recipe-create.model';
 // import { PetAddComponent } from './pet-add/pet-add.component';
 
-const baseUrl = 'https://anishel-be7d3.firebaseio.com/pets/'
+const baseUrl = 'https://anishel-be7d3.firebaseio.com/pets'
 
 @Injectable({
   providedIn: 'root'

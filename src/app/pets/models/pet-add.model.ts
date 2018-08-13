@@ -4,6 +4,8 @@ export class PetAdd {
       public age : number,
       public name : string,
       public description : string,
-      public imageUrl : string
+      public category : string,
+      public gender : string,
+      public image : string
     ) { }
   }
