@@ -1,0 +1,24 @@
+<div id="id-adopt">
+  <h1>To Adopt</h1>
+  <p class="lead" *ngIf="(pets | async)?.length !== 0">Here's the pets you'd like to adopt</p>
+  <p class="lead" *ngIf="(pets | async)?.length === 0">You don't have any pets to adopt right now,
+    go check them out!
+  </p>
+</div>
+<div class="row">
+<article *ngFor="let pet of pets | async" class="col-lg-4 col-md-6 col-sm-12">
+  <div class="card mb-3 id-adopt-box">
+    <h3 class="card-header">{{pet.name}}</h3>
+    <img style="height: 200px; width: 100%; display: block;" src="{{pet.image}}" alt="{{pet.name}}">
+    <div class="card-body">
+      <p class="card-text">{{pet.description}}</p>
+    </div>
+    <div class="card-body">
+      <a routerLink="../../pets/details/{{pet.id}}" class="card-link">More about <b>{{pet.name}}</b></a>
+    </div>
+    <div class="card-footer text-muted">
+      {{pet.createdAt}}
+    </div>
+  </div>
+</article>
+</div>

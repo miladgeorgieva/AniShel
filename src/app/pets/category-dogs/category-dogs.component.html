@@ -1,0 +1,22 @@
+<div id="dogs">
+  <h1>Here's our collection of dogs</h1>
+  <p class="lead" *ngIf="(dogs | async)?.length !== 0">A person's best friend!</p>
+  <p class="lead" *ngIf="(dogs | async)?.length === 0">No available doggos at the moment :(</p>
+</div>
+<div class="row">
+<article *ngFor="let dog of dogs | async" class="col-lg-4 col-md-6 col-sm-12">
+  <div class="card mb-3 dog-box">
+    <h3 class="card-header">{{dog.name}}</h3>
+    <img style="height: 200px; width: 100%; display: block;" src="{{dog.image}}" alt="{{dog.name}}">
+    <div class="card-body">
+      <p class="card-text">{{dog.description}}</p>
+    </div>
+    <div class="card-body">
+      <a routerLink="../details/{{dog.id}}" class="card-link">More about <b>{{dog.name}}</b></a>
+    </div>
+    <div class="card-footer text-muted">
+      {{dog.createdAt}}
+    </div>
+  </div>
+</article>
+</div>

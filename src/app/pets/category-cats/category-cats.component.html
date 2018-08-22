@@ -1,0 +1,22 @@
+<div id="cats">
+    <h1>Here's our collection of cats</h1>
+    <p class="lead" *ngIf="(pets | async)?.length !== 0">Arent they cute?</p>
+    <p class="lead" *ngIf="(cats | async)?.length === 0">No available kittens at the moment :(</p>
+</div>
+<div class="row">
+  <article *ngFor="let cat of cats | async" class="col-lg-4 col-md-6 col-sm-12">
+    <div class="card mb-3 cat-box">
+      <h3 class="card-header">{{cat.name}}</h3>
+      <img style="height: 200px; width: 100%; display: block;" src="{{cat.image}}" alt="{{cat.name}}">
+      <div class="card-body">
+        <p class="card-text">{{cat.description}}</p>
+      </div>
+      <div class="card-body">
+        <a routerLink="../details/{{cat.id}}" class="card-link">More about <b>{{cat.name}}</b></a>
+      </div>
+      <div class="card-footer text-muted">
+        {{cat.createdAt}}
+      </div>
+    </div>
+  </article>
+</div>

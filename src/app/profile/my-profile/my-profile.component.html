@@ -1,0 +1,22 @@
+<div id="my-account">
+  <h1>My account</h1>
+  <p class="lead" *ngIf="(myPets | async)?.length !== 0">Here's a list of your own pets</p>
+  <p class="lead" *ngIf="(myPets | async)?.length === 0">You don't have any pets at the moment</p>
+</div>
+<div class="row">
+<article *ngFor="let pet of myPets | async" class="col-lg-4 col-md-6 col-sm-12">
+  <div class="card mb-3 my-account-box">
+    <h3 class="card-header">{{pet.name}}</h3>
+    <img style="height: 200px; width: 100%; display: block;" src="{{pet.image}}" alt="{{pet.name}}">
+    <div class="card-body">
+      <p class="card-text">{{pet.description}}</p>
+    </div>
+    <div class="card-body">
+      <a routerLink="../../pets/details/{{pet.id}}" class="card-link">More about <b>{{pet.name}}</b></a>
+    </div>
+    <div class="card-footer text-muted">
+      {{pet.createdAt}}
+    </div>
+  </div>
+</article>
+</div>
