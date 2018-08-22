@@ -19,9 +19,16 @@ export class TokenInterceptor implements HttpInterceptor {
 
     const token = this.authService.getToken();
     if (token) {
-      req = req.clone({
-        url: `${req.url}?auth=${token}`
-      });
+      if(req.url.includes("?")) {
+        req = req.clone({
+          url: `${req.url}&auth=${token}`
+        });
+      }
+      else {
+        req = req.clone({
+          url: `${req.url}?auth=${token}`
+        });
+      }
     }
 
     return next.handle(req);

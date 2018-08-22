@@ -1,3 +1,73 @@
-<p>
-  pet-edit works!
-</p>
+<div class="row" *ngIf="bindingModel">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 pet-edit-form">
+      <div class="pet-add">
+          <h1>Share with us some information about your pet:</h1>
+      </div>
+      <form #f="ngForm" (ngSubmit)="edit()">
+        <div class="form-group">
+          <label for="breed">Breed</label>
+          <input 
+          required
+          type="text" 
+          id="breed" 
+          name="breed"
+          [(ngModel)]="bindingModel.breed"
+          class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input 
+          required
+          type="number" 
+          id="age" 
+          name="age"
+          [(ngModel)]="bindingModel.age"
+          class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input 
+          required
+          type="text" 
+          id="name" 
+          name="name"
+          [(ngModel)]="bindingModel.name"
+          class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea 
+          required 
+          id="description" 
+          name="description"
+          [(ngModel)]="bindingModel.description"
+          class="form-control">
+          </textarea>
+        </div>
+        <div class="form-group">
+          <select class="custom-select" name="category" [(ngModel)]="bindingModel.category" required>
+            <option selected value="">Category</option>
+            <option value="cats">Cats</option>
+            <option value="dogs">Dogs</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="male" name="gender" class="custom-control-input" value="male" [(ngModel)]="bindingModel.gender" required>
+            <label class="custom-control-label" for="male">Male</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="female" name="gender" class="custom-control-input" value="female" [(ngModel)]="bindingModel.gender" required>
+            <label class="custom-control-label" for="female">Female</label>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file" id="image" name="image" aria-describedby="fileHelp" (change)="onFileSelected($event)">
+            <small id="fileHelp" class="form-text text-muted">Choose the photo of your pet</small>
+          </div>
+        <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Edit Pet</button>
+      </form>
+    </div>
+  </div>  

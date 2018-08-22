@@ -1,3 +1,32 @@
-<p>
-  pet-details works!
-</p>
+<div *ngIf="pet" class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 pet-details">
+      <h1>{{pet.name}}</h1>
+      <h6>{{pet.name}}'s age: {{pet.age}} years old</h6>
+      <h6>{{pet.name}}'s breed: {{pet.breed}}</h6>
+      <hr/>
+
+      <p><strong>Some information about {{pet.name}}</strong>: {{pet.description}}</p>
+      <hr/>
+
+      <p>{{pet.name}} is <strong>{{pet.gender}}</strong></p>
+      <hr/>
+
+      <p>Here's a picture of {{pet.name}}:</p>
+      <img src="{{pet.image}}"/>
+      <hr/>
+
+      <p class="text-muted" >By: <a routerLink="../../../profile/{{pet.author}}">{{authorName}}</a></p>
+      <p class="text-muted">Created {{pet.createdAt | date : format : timezone}}</p>
+      <hr/>
+      <div class="adopt" *ngIf="authService.getCurrentUserId() != pet.author">
+        <button type="button" *ngIf="!isAdopted" 
+                class="btn btn-primary" (click)="adopt()">I'd adopt!</button>
+        <button type="button" *ngIf="isAdopted" 
+                class="btn btn-primary" (click)="unadopt()">I won't adopt :(</button>
+      </div>
+      <div class="buttons" *ngIf="authService.getCurrentUserId() == pet.author">
+          <button type="button" class="btn btn-info" routerLink="/pets/edit/{{id}}">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+      </div> 
+  </div>
+</div>

@@ -6,6 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { PetsModule } from './pets/pets.module';
 import { AuthGuard } from './auth/auth.guard';
+import { ToAdoptComponent } from './profile/to-adopt/to-adopt.component';
+import { MyProfileComponent } from './profile/my-profile/my-profile.component';
+import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 
 const routes : Route[] = [
   { path: 'auth', children: [
@@ -16,6 +19,11 @@ const routes : Route[] = [
    loadChildren: () => PetsModule ,
    canActivate: [AuthGuard] 
   }, 
+  { path: 'profile', children: [
+    { path: 'im-adopting', component: ToAdoptComponent },
+    { path: 'my', component: MyProfileComponent },
+    { path: ':id', component: UserProfileComponent }
+  ], canActivate: [AuthGuard] },
   {
     path: 'home', component: HomeComponent,
     canActivate: [AuthGuard] 

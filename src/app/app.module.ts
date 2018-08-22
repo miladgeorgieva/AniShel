@@ -13,6 +13,9 @@ import { AuthModule } from './auth/auth.module';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { ToAdoptComponent } from './profile/to-adopt/to-adopt.component';
+import { MyProfileComponent } from './profile/my-profile/my-profile.component';
+import { UserProfileComponent } from './profile/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     FooterComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    ToAdoptComponent,
+    MyProfileComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

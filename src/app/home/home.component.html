@@ -1,3 +1,23 @@
-<p>
-  home works!
-</p>
+<div id="home">
+    <h1>Here's our collection of pets</h1>
+    <p class="lead" *ngIf="(pets | async)?.length !== 0">Have a look and adopt one!</p>
+    <p class="lead" *ngIf="(pets | async)?.length === 0">Unfortunately we don't have any pets at the moment. 
+      Come back later! :)</p>
+</div>
+<div class="row">
+  <article *ngFor="let pet of pets | async" class="col-lg-4 col-md-6 col-sm-12">
+    <div class="card mb-3 pet-box-home">
+      <h3 class="card-header">{{pet.name}}</h3>
+      <img style="height: 200px; width: 100%; display: block;" src="{{pet.image}}" alt="{{pet.name}}">
+      <div class="card-body">
+        <p class="card-text">{{pet.description}}</p>
+      </div>
+      <div class="card-body">
+        <a routerLink="../pets/details/{{pet.id}}" class="card-link">More about <b>{{pet.name}}</b></a>
+      </div>
+      <div class="card-footer text-muted">
+        {{pet.createdAt}}
+      </div>
+    </div>
+  </article>
+</div>

@@ -6,6 +6,8 @@ export class PetAdd {
       public description : string,
       public category : string,
       public gender : string,
-      public image : string
+      public image : string,
+      public createdAt: string,
+      public author: string
     ) { }
   }

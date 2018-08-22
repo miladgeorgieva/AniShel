@@ -1,0 +1,19 @@
+.row {
+    margin: 50px;
+}
+
+.pet-details {
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+}
+
+.buttons, .adopt {
+    float: right;
+}
+
+button {
+    margin: 15px;
+}
