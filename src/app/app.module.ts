@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { ToAdoptComponent } from './profile/to-adopt/to-adopt.component';
 import { MyProfileComponent } from './profile/my-profile/my-profile.component';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserProfileComponent } from './profile/user-profile/user-profile.compon
     HomeComponent,
     ToAdoptComponent,
     MyProfileComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

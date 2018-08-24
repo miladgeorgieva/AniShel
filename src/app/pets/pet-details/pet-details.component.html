@@ -16,7 +16,7 @@
       <hr/>
 
       <p class="text-muted" >By: <a routerLink="../../../profile/{{pet.author}}">{{authorName}}</a></p>
-      <p class="text-muted">Created {{pet.createdAt | date : format : timezone}}</p>
+      <p class="text-muted">Created at {{pet.createdAt | date : format : timezone}}</p>
       <hr/>
       <div class="adopt" *ngIf="authService.getCurrentUserId() != pet.author">
         <button type="button" *ngIf="!isAdopted" 

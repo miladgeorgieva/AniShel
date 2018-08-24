@@ -21,7 +21,7 @@ export class PetAddComponent implements OnInit {
     private toastr : ToastrService,
     private router : Router
   ) {
-    this.bindingModel = new PetAdd("", 0, "", "", "", "", "", "", "");
+    this.bindingModel = new PetAdd("", "", 0, "", "", "", "", "", "", "");
    }
 
   ngOnInit() {
@@ -38,6 +38,7 @@ export class PetAddComponent implements OnInit {
         current.bindingModel.image = downloadUrl;
         current.bindingModel.createdAt = new Date().toString();
         current.bindingModel.author = this.authService.getCurrentUserId();
+        current.bindingModel.breedLowercase = current.bindingModel.breed.toLowerCase();
         current.petsService.addPet(this.bindingModel)
           .subscribe(() => {
             current.toastr.success('Pet added!', 'Success');

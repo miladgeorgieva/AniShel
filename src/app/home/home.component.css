@@ -1,8 +1,16 @@
-#home {
+#home, search {
     text-align: center;
     margin: 30px;
 }
 
 .pet-box-home {
     padding: 0px;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.no-results-box {
+    margin-bottom: 20px;
 }

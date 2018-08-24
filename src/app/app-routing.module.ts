@@ -9,6 +9,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { ToAdoptComponent } from './profile/to-adopt/to-adopt.component';
 import { MyProfileComponent } from './profile/my-profile/my-profile.component';
 import { UserProfileComponent } from './profile/user-profile/user-profile.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminGuard } from './auth/admin.guard';
 
 const routes : Route[] = [
   { path: 'auth', children: [
@@ -30,6 +32,10 @@ const routes : Route[] = [
   },
   {
     path: 'about', component: AboutComponent
+  },
+  {
+    path: 'admin', component: AdminPanelComponent,
+    canActivate: [AdminGuard]
   },
   {
     path: '**', redirectTo: '/auth/signin'

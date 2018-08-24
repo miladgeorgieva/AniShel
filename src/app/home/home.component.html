@@ -1,10 +1,18 @@
-<div id="home">
+<div class="jumbotron">
+  <h1 class="display-3">Search pets by breed</h1>
+  <p class="lead">At the moment we don't have many pets, so our collection of breeds is limited.</p>
+  <form #form="ngForm" class="form-inline my-2 my-lg-0" (submit)="search(form.value)">
+    <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" ngModel>
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+<div id="home" *ngIf="!isSearch">
     <h1>Here's our collection of pets</h1>
     <p class="lead" *ngIf="(pets | async)?.length !== 0">Have a look and adopt one!</p>
     <p class="lead" *ngIf="(pets | async)?.length === 0">Unfortunately we don't have any pets at the moment. 
       Come back later! :)</p>
 </div>
-<div class="row">
+<div class="row" *ngIf="!isSearch">
   <article *ngFor="let pet of pets | async" class="col-lg-4 col-md-6 col-sm-12">
     <div class="card mb-3 pet-box-home">
       <h3 class="card-header">{{pet.name}}</h3>
@@ -20,4 +28,30 @@
       </div>
     </div>
   </article>
+</div>
+<div *ngIf="isSearch">
+  <div id="search">
+    <h1>Results:</h1>
+    <div *ngIf="(searchResult)?.length === 0" class="no-results-box">
+      <p class="lead">No results found!</p>
+      <small class="text-muted">Please, remember to write the full name of the breed!</small>
+    </div>
+  </div>
+  <div class="row">
+  <article *ngFor="let result of searchResult" class="col-lg-4 col-md-6 col-sm-12">
+    <div class="card mb-3 pet-box-home">
+      <h3 class="card-header">{{result[1].name}}</h3>
+      <img style="height: 200px; width: 100%; display: block;" src="{{result[1].image}}" alt="{{result[1].name}}">
+      <div class="card-body">
+        <p class="card-text">{{result[1].description}}</p>
+      </div>
+      <div class="card-body">
+        <a routerLink="../pets/details/{{result[0]}}" class="card-link">More about <b>{{result[1].name}}</b></a>
+      </div>
+      <div class="card-footer text-muted">
+        {{result[1].createdAt}}
+      </div>
+    </div>
+  </article>
+  </div>
 </div>

@@ -2,6 +2,7 @@ export class PetSingle {
     constructor(
         public id : string,
         public breed : string,
+        public breedLowercase : string,
         public age : number,
         public name : string,
         public description : string,

@@ -50,15 +50,19 @@ export class PetsService {
   getAllPets() {
     return this.http.get(`${baseUrl}.json`)
       .pipe(map((res : Response) => {
-        const ids = Object.keys(res);
         const pets : PetSingle[] = [];
-        for (const i of ids) {
-          let formattedDate = this.createdBeforeDays(res[i].createdAt);
-          let formattedDesc = this.truncate(res[i].description);
-          pets.push(new PetSingle(i, res[i].breed, 
-            res[i].age, res[i].name, formattedDesc, res[i].category, res[i].gender, res[i].image, formattedDate, res[i].author));
+        if(res) {
+          const ids = Object.keys(res);
+          for (const i of ids) {
+            let formattedDate = this.createdBeforeDays(res[i].createdAt);
+            let formattedDesc = this.truncate(res[i].description);
+            pets.push(new PetSingle(i, res[i].breed, res[i].breedLowercase,
+              res[i].age, res[i].name, formattedDesc, res[i].category, res[i].gender, res[i].image, formattedDate, res[i].author));
+          }
+  
+          return pets;
         }
-
+        
         return pets;
       }));
   }
@@ -87,8 +91,7 @@ export class PetsService {
       for (const i of ids) {
         let formattedDate = this.createdBeforeDays(res[i].createdAt);
         let formattedDesc = this.truncate(res[i].description);
-        // let user = this.authService.getUser(res[i].author);
-        pets.push(new PetSingle(i, res[i].breed, 
+        pets.push(new PetSingle(i, res[i].breed, res[i].breedLowercase,
           res[i].age, res[i].name, formattedDesc, res[i].category, res[i].gender, res[i].image, formattedDate, res[i].author));
       }
 
@@ -105,7 +108,7 @@ export class PetsService {
           let formattedDate = this.createdBeforeDays(res[i].createdAt);
           let formattedDesc = this.truncate(res[i].description);
           // let user = this.authService.getUser(res[i].author);
-          pets.push(new PetSingle(i, res[i].breed, 
+          pets.push(new PetSingle(i, res[i].breed, res[i].breedLowercase,
             res[i].age, res[i].name, formattedDesc, res[i].category, res[i].gender, res[i].image, formattedDate, res[i].author));
         }
 
@@ -122,7 +125,7 @@ export class PetsService {
           let formattedDate = this.createdBeforeDays(res[i].createdAt);
           let formattedDesc = this.truncate(res[i].description);
           // let user = this.authService.getUser(res[i].author);
-          pets.push(new PetSingle(i, res[i].breed, 
+          pets.push(new PetSingle(i, res[i].breed, res[i].breedLowercase,
             res[i].age, res[i].name, formattedDesc, res[i].category, res[i].gender, res[i].image, formattedDate, res[i].author));
         }
 
@@ -144,7 +147,7 @@ export class PetsService {
           this.getById(value.petId).subscribe(currentPet => {
             let formattedDate = this.createdBeforeDays(currentPet.createdAt);
             let formattedDesc = this.truncate(currentPet.description);
-            pets.push(new PetSingle(value.petId, currentPet.breed, 
+            pets.push(new PetSingle(value.petId, currentPet.breed, currentPet.breedLowercase,
               currentPet.age, currentPet.name, formattedDesc, 
               currentPet.category, currentPet.gender,
               currentPet.image, formattedDate, currentPet.author));
@@ -186,5 +189,12 @@ export class PetsService {
 
   unadoptPet(adoptionId : string) {
     return this.http.delete(`${adoptionsUrl}/${adoptionId}.json`);
+  }
+
+  findPetsByBreed(input : string) {
+    return this.http.get(`${baseUrl}.json?orderBy="breedLowercase"&equalTo="${input}"`)
+      .pipe(map((res : Response) => {
+        return Object.entries(res);
+      }));
   }
 }
