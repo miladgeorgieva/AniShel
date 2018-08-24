@@ -1,27 +1,37 @@
 # AniShel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
+AniShel (Animal Shelter) is a free application that lets people find and adopt stray animals who need a new home and a loving family.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The app uses Angular for the User Interface, bootswatch for responsiveness and modern look and Firebase as database.
 
-## Code scaffolding
+### Installing
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To use Anishel, you need to install all dependencies by using the following command in the Terminal/Command Prompt:
 
-## Build
+```
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+In order to create an admin account, you'd have to get into your Firebase database and change the field "isAdmin" of the user to "true".
 
-## Running unit tests
+## Built With
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [Angular](https://angular.io/) - The UI library
+* [Firebase](https://firebase.google.com/) - Database
+* [bootswatch](https://bootswatch.com/) - Used for responsive and modern-looking design
+* [Angular Router](https://angular.io/api/router) - Used for client-side routing
+* [ngx-toastr](https://www.npmjs.com/package/ngx-toastr) - Notification System
 
-## Running end-to-end tests
+## Versioning
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The current version of AniShel is 0.1 and it's unstable.
 
-## Further help
+## Authors
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* **Mila Hristova** - [Mila Hristova](https://github.com/milahristova)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
